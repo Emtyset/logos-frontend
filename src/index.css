@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.exText {
+  margin-left:30px;
+  font-weight: normal;
+}
+
+.exTime {
+  position: absolute;
+  right: 30px;
+  bottom: 10px;
+}
