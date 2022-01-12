@@ -1,0 +1,81 @@
+@import "../defaults";
+
+.exercise_full {
+    width: 70%;
+    background-color: $third-primary-color;
+    border-radius: 20px;
+    margin-top: 8px;
+    //padding: 1rem;
+    position: relative;
+    min-height: calc(100vh - $header-hight - 16px);
+    box-sizing: border-box;
+}
+
+.exercise__text {
+    margin: 1rem;
+    margin-bottom: 210px;
+}
+
+.exercise_full__header {
+    @include font-h2;
+}
+
+.exercise_full__p {
+    @include font-body1;
+    font-size: 18pt;
+}
+
+.exercise_full__p_center {
+    @include font-body1;
+    font-size: 18pt;
+    text-align: center;
+}
+
+.exercise_full__button_group {
+    display: flex;
+    justify-content : center;
+    align-items: center;
+    //padding: 0rem 1rem;
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    margin-right: 0px;
+    margin-left: 0px;
+    box-sizing: border-box;
+}
+
+.exercise_full__button_wrapper{
+    width:33%;
+    display: inline-block;
+    height: 100px;
+}
+
+/* .exercise-full__button-group div div, button {
+    display: block;
+    margin: auto;
+} */
+
+.exercise_full__button{
+    border: none;
+    display: block;
+    margin: auto;
+    background-color: transparent;
+}
+
+.exercise_full__button_finish{
+    border: none;
+    display: block;
+    margin: auto;
+    background-color: transparent;
+    width: 100px;
+    height: 100px;
+    background-color: $primary-color;
+    border-radius: 50%;
+}
+
+.exercise_full__link {
+    font-weight: 800;
+    font-size: 60px;
+    color: $third-primary-color;
+    text-decoration: none;
+}

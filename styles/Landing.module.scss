@@ -1,0 +1,72 @@
+@import "./defaults";
+
+$window-width: 50%;
+$window-heigth: 300px;
+
+.landing__window {
+    background-color: $second-primary-color;
+    text-align: center;
+    min-height: $window-heigth;
+    width: $window-width;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -$window-heigth / 2;
+    margin-left:  -$window-width / 2;
+    display: flex;
+    flex-direction:column;
+    box-sizing: border-box;
+    border-radius: 30px;
+    justify-content: space-evenly
+}
+
+.landing__headline {
+    @include font-h4;
+    margin: 0;
+    padding: 0;
+}
+
+// https://codepen.io/Rafu/pen/VJYRyY
+.landing__logos {
+    &:after{
+        content: 'Логос';
+        animation: spin 4s linear infinite;
+    }
+    
+}
+
+@keyframes spin {
+    0% { content:"λόγος"; }
+    33% { content:"Logos"; }
+    66% { content: "Логос"; }
+  }
+
+.landing_button_wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-direction:column;
+    align-items: center;
+}
+
+
+.landing__button {
+    @include font-h6;
+    text-decoration: none;
+    display:block;
+    padding:0.2em 1.45em;
+    margin:0.3em;
+    border: 0.15em solid rgba(255, 255, 255, 0.8);
+    box-sizing: border-box;
+    width: 300px;
+    text-decoration:none;
+    color:#000000;
+    background-color:rgba(255, 255, 255, 0.8);
+    text-align:center;
+    position:relative;
+    border-radius: 5px;
+
+    &:hover {
+        border-color:$primary-color;
+    }
+
+}

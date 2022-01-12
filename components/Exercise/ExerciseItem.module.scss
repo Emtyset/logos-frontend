@@ -1,0 +1,66 @@
+@import '../../styles/defaults';
+
+@mixin exercise_item_li {
+    box-sizing: border-box;
+
+    height: 200px;
+    list-style: none;
+    position: relative;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    
+    margin: 1rem 0;
+
+    border-radius: 20px;
+    background-color: $third-primary-color;
+    border: 5px solid $third-primary-color;
+    &:first-child{
+        margin-top: 0;
+    }
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+
+.exercise_item_li {
+    @include exercise_item_li;
+}
+
+.exercise_item_li_chosen {
+    @include exercise_item_li;
+    border-color: $primary-color;
+}
+
+
+.exercise_item_text_wrapper {
+    @include font-body1;
+    margin: 0.5rem 0 2rem 0.5rem;
+    width: 90%;
+    overflow:hidden;
+}
+
+.exercise_item_header {
+    @include font-h6;
+}
+
+.exercise_item_p {
+    @include font-body1;
+    font-size: 18pt;
+}
+
+.exercise_item_pre {
+    @include font-body1;
+    font-size: 18pt;
+    text-align: center;
+}
+
+
+.exercise_item_time {
+    @include font-body2;
+    position: absolute;
+    right: 30px;
+    bottom: 10px;
+}

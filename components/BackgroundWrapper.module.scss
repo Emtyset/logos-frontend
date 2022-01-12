@@ -1,0 +1,26 @@
+@import "../styles/defaults";
+
+.background {
+    //height: calc(100vh - $header-hight);
+    background-image: url('../public/greece.jpg');
+    background-position: center;
+
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
+    top: 0;
+}
+
+.background_navbarless {
+    height: 100vh;
+    background-image: url('../public/greece.jpg');
+    background-position: center;
+}
+
+.background_wrapper {
+    height: inherit;
+    background: rgba($primary-color, 0.2);
+    position: absolute;
+    width: 100%;
+}

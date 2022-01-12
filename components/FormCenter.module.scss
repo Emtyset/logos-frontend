@@ -1,0 +1,17 @@
+@import "../styles/defaults";
+
+.form_center__wrapper {
+    min-height: calc(100vh - $header-hight);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_center__form_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    width: 560px;
+}

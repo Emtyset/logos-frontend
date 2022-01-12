@@ -1,0 +1,20 @@
+@import "../styles/defaults";
+
+.input_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    @include font-body1;
+}
+
+
+.input {
+    width: 100%;
+    display: flex;
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 5px;
+    outline: none;
+    padding: 5px 10px;
+    @include font-body1;
+}

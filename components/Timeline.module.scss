@@ -1,0 +1,130 @@
+@import "../styles/defaults";
+
+$line-color: #abaaed;
+$circle-border-color: #4e5ed3;
+
+.timeline__list , .timeline__list_elem {
+    padding: 0;
+    list-style: none;
+}
+
+.timeline {
+    // background: #eaf6ff;
+    padding: 2rem;
+    border-radius: 15px;
+    display: grid;
+}
+
+.timeline__header {
+  @include font-h4;
+}
+
+.timeline__list {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+@mixin timeline-list-elem-mixin {
+    @include font-body1;
+    padding-top: 15px;
+    padding-bottom: 1.5rem;
+    position: relative;
+    padding-left: 20px;
+    border-top: $line-color solid 1px;
+}
+
+$pseudo-width: 20px;
+$pseudo-width-large: 30px;
+
+@mixin timeline-list-elem-before-mixin {
+    content: '';
+    width: $pseudo-width;
+    height: $pseudo-width;
+    border: 1px solid $circle-border-color;
+    border-radius: 50%;
+    position: absolute;
+    left: 20px;
+    top: -10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.timeline__list_elem {
+  @include timeline-list-elem-mixin();
+  &:before{
+    @include timeline-list-elem-before-mixin();
+    background: white;
+  }
+}
+
+.timeline__list_elem_green {
+  @include timeline-list-elem-mixin();
+  &:before{
+    @include timeline-list-elem-before-mixin();
+    content: '';
+    background: $done-color;
+  }
+}
+
+.timeline__list_elem_red {
+  @include timeline-list-elem-mixin();
+  &:before{
+    @include timeline-list-elem-before-mixin();
+    content: '';
+    background: $fail-color;
+  }
+}
+
+.timeline__list_elem_today {
+  @include timeline-list-elem-mixin();
+  &:before{
+    @include timeline-list-elem-before-mixin();
+    content: '';
+    background: white;
+    border-color: $primary-color;
+    animation: blink 2s ease-in-out infinite;
+  }
+}
+
+@keyframes blink {
+  from {background-color: $done-color;}
+  50% {background-color: $fail-color;}
+  to {background-color: $done-color;}
+}
+
+.timeline__button_wrapper{
+  @include timeline-list-elem-mixin();
+}
+
+.timeline__button {
+  @include font-h6;
+  text-decoration: none;
+  display: table-cell;
+  width: 60px;
+  height: 60px;
+  line-height: 54px;
+  border: 3px solid $primary-color;
+  box-sizing: border-box;
+  text-decoration:none;
+  color:$primary-color;
+  background-color: $background-color;
+  text-align: center;
+  position:relative;
+  left: -20px;
+  top: -35px;  
+  border-radius: 5px;
+    &:hover {
+      border-color:$second-primary-color;
+  }
+}
+
+
+.timeline__date {
+
+}
+
+.timeline__text {
+
+}

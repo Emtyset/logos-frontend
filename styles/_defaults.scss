@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+$primary-color: #1FAB89;
+$second-primary-color: #62D2A2;
+$third-primary-color: #9DF3C4;
+$background-color: #D7FBE8;
+$background-color-white: #FBFFFD;
+$done-color: rgb(67, 223, 67);
+$fail-color: rgb(252, 48, 48);
+
+$header-hight: 70px;
+
+
+@mixin font-h1 {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    font-size: 97px;
+}
+
+@mixin font-h2 {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    font-size: 61px;
+}
+
+@mixin font-h3 {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    font-size: 48px;
+}
+
+@mixin font-h4 {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    font-size: 34px;
+}
+
+@mixin font-h5 {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    font-size: 24px;
+}
+
+@mixin font-h6 {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+@mixin font-body1 {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+@mixin font-body2 {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+@mixin font-navbar {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: .8px;
+}
+
+@mixin font-logo {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+}
