@@ -10,7 +10,7 @@ $circle-border-color: #4e5ed3;
 
 .timeline {
     // background: #eaf6ff;
-    padding: 2rem;
+    //padding: 2rem;
     border-radius: 15px;
     display: grid;
 }
@@ -20,9 +20,9 @@ $circle-border-color: #4e5ed3;
 }
 
 .timeline__list {
-    width: 90%;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: minmax(100px, auto);
 }
 
 @mixin timeline-list-elem-mixin {
@@ -32,6 +32,10 @@ $circle-border-color: #4e5ed3;
     position: relative;
     padding-left: 20px;
     border-top: $line-color solid 1px;
+    &:last-child {
+      border-top-right-radius: 20px;
+      border-right: $line-color solid 1px;
+    }
 }
 
 $pseudo-width: 20px;
@@ -61,6 +65,8 @@ $pseudo-width-large: 30px;
 
 .timeline__list_elem_green {
   @include timeline-list-elem-mixin();
+  border-top: $done-color solid 1px;
+  box-shadow: 0 -5px $done-color;
   &:before{
     @include timeline-list-elem-before-mixin();
     content: '';
@@ -70,6 +76,8 @@ $pseudo-width-large: 30px;
 
 .timeline__list_elem_red {
   @include timeline-list-elem-mixin();
+  border-top: $fail-color solid 1px;
+  box-shadow: 0 -5px $fail-color;
   &:before{
     @include timeline-list-elem-before-mixin();
     content: '';
@@ -96,6 +104,12 @@ $pseudo-width-large: 30px;
 
 .timeline__button_wrapper{
   @include timeline-list-elem-mixin();
+}
+
+.timeline__button_wrapper_green{
+  @include timeline-list-elem-mixin();
+  border-top: $done-color solid 1px;
+  box-shadow: 0 -5px $done-color;
 }
 
 .timeline__button {

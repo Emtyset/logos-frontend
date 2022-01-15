@@ -31,7 +31,7 @@ export default function Header() {
                 <ul className={styles.header__list}>
                     <li  className={styles.header__list_elem}><Link href="/"><a>Справка</a></Link></li>
                     <li  className={styles.header__list_elem}><Link href="/db"><a>База заданий</a></Link></li>
-                    <li  className={styles.header__list_elem}><Link href="/"><a>Обучение</a></Link></li>
+                    {/* <li  className={styles.header__list_elem}><Link href="/"><a>Обучение</a></Link></li> */}
                     {getAccountElems(session)}
                 </ul>
             </nav>

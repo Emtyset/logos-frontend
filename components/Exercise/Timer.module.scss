@@ -1,0 +1,13 @@
+@import "../../styles/defaults";
+
+.timer {
+    width: 100px;
+    height: 100px;
+    background-color: $background-color;
+    border-radius: 50%;
+    border: 5px solid $primary-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include font-h6;
+}

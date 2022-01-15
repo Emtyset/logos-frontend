@@ -1,0 +1,16 @@
+@import "../styles/defaults";
+
+.stat__wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.stat__header {
+    @include font-h5;
+    padding: 1rem 0;
+}
+
+.stat__text{
+    @include font-h6;
+    padding: 0.3rem 0;
+}

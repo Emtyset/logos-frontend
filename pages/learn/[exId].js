@@ -1,61 +1,91 @@
-import ExerciseList from '../../components/Exercise/ExerciseList'
-import styles from "../../styles/Exercise/exId.module.scss"
+import styles from "../../styles/exId.module.scss"
 import { getSession, useSession } from 'next-auth/react'
 import Link from 'next/link';
-import ExerciseFull from '../../components/Exercise/ExerciseFull';
+import Navbar from "../../components/Navbar"
+import ExerciseItem from "../../components/Exercise/ExerciseItem";
+import ExerciseText from "../../components/Exercise/ExerciseText"
+import ExerciseButton from "../../components/Exercise/ExerciseButton"
+import Timer from "../../components/Exercise/Timer";
+
+import { useState } from "react"
+import { useRouter } from "next/router";
+
+import axios from "axios"
+
+const orderToTitle = [
+    "Гимнастика", "Упражнение 1", "Упражнение 2", "Упражнение 3", "Контрольная точка"
+]
 
 
-export default function ExercisePage({exSet, tiSet}) {
+export default function ExercisePage({ oneSession }) {
     const { data: session, status } = useSession()
-	const loading = status === 'loading'
-    return <>
-        <div className={styles.exercise_part}>
-            <ExerciseList exSet={exSet} tiSet={tiSet}/>
-            <ExerciseFull exSet={exSet} tiSet={tiSet} username={session.user.name}/>
-        </div>
-    </>
-}
+    const loading = status === 'loading'
 
-function jsonEscapeForAll(exSet){
-    function jsonEscape(str)  {
-        return str.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
-    }
+    // LOGIC PART
+    const times = oneSession.map(x => x.time);
+    let [idx, setIdx] = useState(0)
+    let router = useRouter()
     
-    let intro = exSet.intro
-    let main = exSet.main
-    let ending = exSet.ending
-
-    //console.log(intro, main, ending)
-
-    let mapper = x => {
-        return x.map(y => {
-            return jsonEscape(y)
+    
+    const finishExercise = async () => {
+        await axios.post("http://localhost:5000/api/user/finish-session/", { "username": session.user.name })
+        .then(() => {
+            axios.post("http://localhost:5000/api/user/add-done", {
+                "username": session.user.name,
+                "exerciseIds": oneSession.map(x => x._id)
+            })
+        }).then(() => {
+            router.push('/')
         })
     }
 
-    //intro = intro.map(mapper)
-    main = main.map(x => x.map(mapper))
-    ending = ending.map(mapper)
+    // RENDER PART
 
-    return {
-        intro,
-        main,
-        ending
-    }
+
+    return <>
+        <Navbar />
+        <div className={styles.exercise_page}>
+            <div className={styles.exercise_page__list}>
+                {
+                    oneSession.map((x, i) => {
+                        return <ExerciseItem title={orderToTitle[i]} exercise={x} itemHeight={150} onClick={() => { setIdx(i) }} focus={idx === i}/>
+                    })
+                }
+            </div>
+            <div className={styles.exercise_page__content}>
+                <ExerciseText title={orderToTitle[idx]} exercise={oneSession[idx]} content={<>
+                    <div className={styles.exercise_page__button_group}>
+                        <div className={styles.exercise_page__button_wrapper}>
+                            {idx > 0 ? 
+                                <ExerciseButton text={"←"} onClick={() => setIdx(idx - 1)} /> 
+                                : null}
+                        </div>
+                        <div className={styles.exercise_page__button_wrapper}>
+                            <Timer idx={idx} times={times} />
+                        </div>
+                        <div className={styles.exercise_page__button_wrapper}>
+                            {idx < oneSession.length - 1 ? 
+                                <ExerciseButton text={"→"} onClick={() => setIdx(idx + 1)} /> 
+                                : <ExerciseButton text={"✓"} onClick={finishExercise} />}
+                        </div>
+                    </div>
+                </>} />
+            </div>
+        </div>
+    </>
 }
 
 
 export async function getServerSideProps(context) {
     // const exerciseDataMethods = require('../../utils/exerciseDataMethods')
     let session = await getSession(context)
-    let {textData, timeData} = await (await fetch("http://localhost:5000/api/exercise/getOneSession")).json()
-    textData = jsonEscapeForAll(textData)
-    
+    let { intro, main, end } = await (await fetch(`http://localhost:5000/api/exercise/${session.user.name}/get-session`)).json()
+    //textData = jsonEscapeForAll(textData)
+    const oneSession = [intro, ...main, end]
     return {
         props: {
             session: session,
-            exSet: textData,
-            tiSet: timeData
+            oneSession: oneSession
         }
     }
 }

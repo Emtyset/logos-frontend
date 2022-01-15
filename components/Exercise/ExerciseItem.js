@@ -1,10 +1,7 @@
 import styles from './ExerciseItem.module.scss'
 
-const orderToTitle = [
-    "Гимнастика", "Упражнение", "Контрольная точка"
-]
 
-export default function ExerciseItem({ exercise, focus = false, itemHeight = undefined, textFontSize = 16, onClick=() => null}) {
+export default function ExerciseItem({ exercise, focus = false, title={}, itemHeight = undefined, textFontSize = 16, onClick=() => null}) {
     const itemHeightPx = (itemHeight) ? `${itemHeight}px` : "auto"
     const textFontSizePx = `${textFontSize}px`
     console.log(styles.item_height)
@@ -13,7 +10,7 @@ export default function ExerciseItem({ exercise, focus = false, itemHeight = und
             <br />
             <div className={styles.exercise_item_text_wrapper}>
                 <span className={styles.exercise_item_header}>
-                    {orderToTitle[exercise.order]}
+                    {title}
                 </span>
                 {
                     exercise.text.map(subarray => {

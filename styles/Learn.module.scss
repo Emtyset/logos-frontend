@@ -1,6 +1,14 @@
 @import "./defaults";
 
-.learn_page{
-    margin: 0 auto;
-    width: 80%;
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.wrapper_timeline {
+    width: 60%;
+}
+
+.wrapper_stats{
+    width: 25%;
 }

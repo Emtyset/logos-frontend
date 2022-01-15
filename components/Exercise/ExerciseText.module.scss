@@ -1,0 +1,49 @@
+@import "../../styles/defaults";
+
+.exercise_text {
+    box-sizing: border-box;
+
+    min-height: calc(100vh - $header-hight);
+    list-style: none;
+    position: relative;
+
+    // display: flex;
+    // justify-content: flex-start;
+    // align-items: flex-start;
+    // flex-direction: column;
+    
+    border-radius: 20px;
+    background-color: $third-primary-color;
+    border: 5px solid $third-primary-color;
+}
+
+
+
+.exercise_text_wrapper {
+    @include font-body1;
+    margin: 0.5rem 0 2rem 0.5rem;
+    width: auto;
+    //overflow: scroll;
+}
+
+.exercise_text_header {
+    @include font-h4;
+}
+
+.exercise_text_p {
+    @include font-body1;
+    font-size: 18pt;
+    width: 100%;
+}
+
+.exercise_text_pre {
+    @include font-body1;
+    font-size: 18pt;
+    text-align: center;
+    width: 100%;
+
+}
+
+.exercise_text__extra_content {
+height: 10%;
+}

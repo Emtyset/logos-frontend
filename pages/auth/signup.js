@@ -27,7 +27,7 @@ export default function SignUpPage({ defectOptions }) {
                 "defects": selectedOptions.map(x => x.value)
             }).then((res) => {
                 console.log(res.data.isOk)
-                router.push('/')
+                router.push('/auth/signin')
             })
         } catch (err) {
             console.log(err)
@@ -41,6 +41,7 @@ export default function SignUpPage({ defectOptions }) {
                     <h1 className="sign_header">Регистрация</h1>
                     <Input type="text" onChange={e => setUsername(e.target.value)} />
                     <Input type="password" onChange={e => setPassword(e.target.value)} />
+                    <p>Выберите свой дефект речи:</p>
                     <Select
                         closeMenuOnSelect={false}
                         isMulti
@@ -68,7 +69,7 @@ export async function getServerSideProps(context) {
     let { defectOptions } = await (await fetch("http://localhost:5000/api/defect/get-all")).json()
     defectOptions = defectOptions.map(x => {
         return {
-            label: x.name, value: x._id
+            label: x.description, value: x._id
         }
     })
     return {
